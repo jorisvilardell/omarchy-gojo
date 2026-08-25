@@ -1,0 +1,12 @@
+# Payload manifest, read by `omatheme install <this repo url>`.
+# https://github.com/jorisvilardell/omatheme
+
+[payload]
+name = "Gojo"
+description = "Lock screen where the password ring is Gojo's cursed energy sphere"
+theme = "gojo-infinity"
+
+[lock]
+# Presentational QML only. Service.qml holds the PAM and ext-session-lock-v1
+# logic and comes from a fresh clone of omarchy.lock on every theme switch.
+overlay = "lock-plugin/qml"
