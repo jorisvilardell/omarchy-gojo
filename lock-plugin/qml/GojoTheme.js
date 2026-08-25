@@ -1,6 +1,6 @@
 .pragma library
 
-// The three poses ship together and one is drawn at random each time the screen
+// The poses ship together and one is drawn at random each time the screen
 // locks — the point is that you do not know which Gojo is waiting.
 //
 // Each pose carries its own energy palette. These deliberately do not come from
@@ -23,19 +23,10 @@ var poses = [
         fade: 0.74,
         // Width / height of the artwork. Canvas cannot ask an image for its
         // size, so each pose states its own.
-        aspect: 990 / 1200
-    },
-    {
-        source: "assets/gojo-cursed-technique.png",
-        name: "Cursed Technique",
-        core: "#fff0ff",
-        inner: "#ff41e0",
-        outer: "#a21caf",
-        halo: "#e879f9",
-        anchorX: 0.46,
-        anchorY: 0.52,
-        fade: 0.80,
-        aspect: 819 / 1200
+        aspect: 990 / 1200,
+        // Drawn height as a fraction of the screen. A wide crop needs to be
+        // smaller than a tall one to occupy the same right-hand column.
+        height: 1.0
     },
     {
         source: "assets/gojo-six-eyes.png",
@@ -44,10 +35,11 @@ var poses = [
         inner: "#6ee7ff",
         outer: "#2563eb",
         halo: "#38bdf8",
-        anchorX: 0.67,
-        anchorY: 0.85,
-        fade: 0.66,
-        aspect: 1307 / 1200
+        anchorX: 0.63,
+        anchorY: 0.79,
+        fade: 0.86,
+        aspect: 1307 / 1200,
+        height: 0.92
     }
 ];
 

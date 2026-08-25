@@ -5,9 +5,8 @@ Gojo Satoru's cursed energy sphere: the ring you type into is the orb in his
 hand, it charges as you type, and it turns red and recoils when the password is
 wrong.
 
-One of three poses is drawn at random each time the screen locks, and a wrong
-password draws a different one. Each pose brings its own energy colour —
-Hollow Purple, Cursed Technique, Six Eyes.
+One of two poses is drawn at random each time the screen locks, each with its
+own energy colour — Hollow Purple and Six Eyes.
 
 ![Hollow Purple](preview.png)
 ![Six Eyes](preview-six-eyes.png)
@@ -78,7 +77,7 @@ lock-plugin/
     LockView.qml       the view Service.qml drives: text, dots, the input
     LockCanvas.qml     everything drawn: background, artwork, the sphere
     GojoTheme.js       poses, their colours, where the orb sits on each
-    assets/            the three cutouts and two wisp textures
+    assets/            the cutouts and two wisp textures
   install.sh  uninstall.sh
 omatheme.toml          payload manifest, for the theme-bound path
 ```

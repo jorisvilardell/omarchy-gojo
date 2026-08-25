@@ -20,6 +20,7 @@ Canvas {
     property real poseAnchorY: 0.5
     property real poseFade: 0.72      // dissolve the cutout's bottom edge
     property real poseAspect: 1       // width / height of the artwork
+    property real poseHeight: 1       // drawn height, fraction of the screen
     property color coreColor: "#ffffff"
     property color innerColor: "#e879ff"
     property color outerColor: "#7c3aed"
@@ -179,8 +180,16 @@ Canvas {
         var base = Math.min(w, h) * 0.088
         var breathe = 1 + Math.sin(_breathe) * 0.035 + Math.sin(_breathe * 2.3) * 0.015
         var R = base * (1 + chg * 0.28) * breathe
-        var cx = w * 0.79 + _recoil * base * 0.55 + (Math.random() - 0.5) * _shake * 8
-        var cy = h * 0.545 + (Math.random() - 0.5) * _shake * 8
+
+        // The artwork is pinned to the bottom-right, so no cutout ever ends on
+        // a visible horizontal edge; the orb is then placed on the hand within
+        // that frame, rather than the artwork being hung off the orb.
+        var imgH = h * poseHeight
+        var imgW = imgH * poseAspect
+        var imgX = w - imgW - w * 0.03
+        var imgY = h - imgH
+        var cx = imgX + imgW * poseAnchorX + _recoil * base * 0.55 + (Math.random() - 0.5) * _shake * 8
+        var cy = imgY + imgH * poseAnchorY + (Math.random() - 0.5) * _shake * 8
 
         ctx.reset()
         ctx.clearRect(0, 0, w, h)
@@ -202,25 +211,20 @@ Canvas {
         ctx.fillRect(0, 0, w, h)
         ctx.globalCompositeOperation = "source-over"
 
-        // --- the artwork, hand centred on the orb
+        // --- the artwork
         if (poseSource != "" && isImageLoaded(poseSource)) {
-            var drawH = h * ease
-            var drawW = drawH * poseAspect
             var dy = (1 - ease) * 26
             ctx.globalAlpha = ease
-            ctx.drawImage(poseSource, cx - poseAnchorX * drawW, cy - poseAnchorY * drawH + dy, drawW, drawH)
+            ctx.drawImage(poseSource, imgX, imgY + dy, imgW, imgH)
             ctx.globalAlpha = 1
 
-            // Dissolve the artwork into the bottom of the frame so its cutout
-            // edge never reads as a hard horizontal line.
+            // Sink the last of the artwork into the floor of the frame.
             var y0 = h * poseFade
-            if (y0 < h) {
-                var fade = ctx.createLinearGradient(0, y0, 0, h)
-                fade.addColorStop(0, "rgba(4,5,10,0)")
-                fade.addColorStop(1, "rgba(4,5,10,1)")
-                ctx.fillStyle = fade
-                ctx.fillRect(0, y0, w, h - y0)
-            }
+            var fade = ctx.createLinearGradient(0, y0, 0, h)
+            fade.addColorStop(0, "rgba(4,5,10,0)")
+            fade.addColorStop(1, "rgba(4,5,10,0.92)")
+            ctx.fillStyle = fade
+            ctx.fillRect(0, y0, w, h - y0)
         }
 
         // --- orb light spilling onto the scene

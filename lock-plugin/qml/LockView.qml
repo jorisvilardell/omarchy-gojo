@@ -51,9 +51,6 @@ Item {
         if (inputEnabled) Qt.callLater(forcePasswordFocus)
     }
 
-    // A new attempt draws a different Gojo.
-    onFailedAttemptsChanged: if (failedAttempts > 0) pose = Gojo.randomPose()
-
     LockCanvas {
         id: scene
         anchors.fill: parent
@@ -63,6 +60,7 @@ Item {
         poseAnchorY: root.pose.anchorY
         poseFade: root.pose.fade
         poseAspect: root.pose.aspect
+        poseHeight: root.pose.height
 
         coreColor: root.pose.core
         innerColor: root.pose.inner
