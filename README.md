@@ -10,7 +10,7 @@ password draws a different one. Each pose brings its own energy colour —
 Hollow Purple, Cursed Technique, Six Eyes.
 
 ![Hollow Purple](preview.png)
-![Cursed Technique](preview-cursed.png)
+![Six Eyes](preview-six-eyes.png)
 
 ## Install
 
@@ -75,10 +75,10 @@ launcher that go with it — follows
 ```
 lock-plugin/
   qml/
-    LockView.qml       the view Service.qml drives
-    InfinityOrb.qml    the sphere: halo, rings, orbiting sparks
+    LockView.qml       the view Service.qml drives: text, dots, the input
+    LockCanvas.qml     everything drawn: background, artwork, the sphere
     GojoTheme.js       poses, their colours, where the orb sits on each
-    assets/            the three cutouts
+    assets/            the three cutouts and two wisp textures
   install.sh  uninstall.sh
 omatheme.toml          payload manifest, for the theme-bound path
 ```
