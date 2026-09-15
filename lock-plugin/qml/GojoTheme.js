@@ -13,6 +13,8 @@
 var poses = [
     {
         source: "assets/gojo-hollow-purple.png",
+        energySource: "assets/energy-hollow-purple.png",
+        glowSource: "assets/glow-hollow-purple.png",
         name: "Hollow Purple",
         core: "#ffffff",
         inner: "#e879ff",
@@ -30,6 +32,8 @@ var poses = [
     },
     {
         source: "assets/gojo-six-eyes.png",
+        energySource: "assets/energy-six-eyes.png",
+        glowSource: "assets/glow-six-eyes.png",
         name: "Six Eyes",
         core: "#f0fcff",
         inner: "#6ee7ff",
