@@ -8,7 +8,7 @@ wrong.
 One of two poses is drawn at random each time the screen locks, each with its
 own energy colour — Hollow Purple and Six Eyes.
 
-![Six Eyes](preview.png)
+![Six Eyes](preview-lock.png)
 
 ## Install
 
